@@ -27,26 +27,38 @@ layout: default
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+          
+          {% comment %}--- 这里是阅读时间 ---{% endcomment %}
           {% if page.read_time %}
-            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
-        {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
-        {% endif %}
-        
-        {% if page.collection == 'teaching' %}
-          <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-        {% endif %}    
+          
+          {% comment %}--- 这里是发布日期 ---{% endcomment %}
+          {% if page.date %}
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+          {% endif %}
         </header>
+
+        {% comment %}--- 🔴 重点修改：在这里插入标签代码 ---{% endcomment %}
+        {% if page.tags %}
+          <p class="page__taxonomy" style="margin-top: 10px; font-size: 0.8em;">
+            <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+            <span itemprop="keywords">
+            {% for tag in page.tags %}
+              <a href="{{ base_path }}/tags/#{{ tag | slugify }}" class="page__taxonomy-item" rel="tag" style="background-color: #f2f3f3; padding: 2px 6px; border-radius: 4px; margin-right: 5px; text-decoration: none; color: #555;">{{ tag }}</a>
+            {% endfor %}
+            </span>
+          </p>
+          <hr />
+        {% endif %}
+        {% comment %}--- 插入结束 ---{% endcomment %}
+
       {% endunless %}
 
       <section class="page__content" itemprop="text">
         {{ content }}
-
+        
+        {% comment %}--- 以下是论文下载链接的逻辑，保留不动 ---{% endcomment %}
         {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
           <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
         {% elsif page.citation and page.paperurl and page.slidesurl %}
@@ -93,7 +105,6 @@ layout: default
     {% endif %}
   </article>
 
-  {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
   {% if page.id and page.related and site.related_posts.size > 0 %}
     <div class="page__related">
       {% if site.data.ui-text[site.locale].related_label %}
