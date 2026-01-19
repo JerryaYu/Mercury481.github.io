@@ -7,9 +7,9 @@ title: "Yujie Pan"    # 浏览器标签页标题
 title_separator: "-"
 name: &name "Yujie Pan"
 description: &description "Master of Applied Statistics at Wuhan University"
-url: "https://Mercury481.github.io" # 你的网站地址
+url: "https://JerryaYu.github.io" # 你的网站地址
 baseurl: "" 
-repository: "Mercury481/Mercury481.github.io"
+repository: "JerryaYu/JerryaYu.github.io"
 
 # --- 2. 侧边栏个人资料 (Sidebar) ---
 author:
@@ -19,7 +19,7 @@ author:
   location: "Wuhan, China"
   employer: "Wuhan University"
   email: "2025286560200@whu.edu.cn"
-  github: "Mercury481"           # 你的 GitHub 链接
+  github: "JerryaYu"           # 你的 GitHub 链接
   # 下面这些如果以后有了，可以填入链接，否则留空即可
   linkedin: 
   googlescholar: 
