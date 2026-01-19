@@ -3,7 +3,7 @@
 
 # --- 1. 网站基础设置 ---
 locale: "zh-CN"                  # 设置语言为中文
-title: "Yujie Pan's Homepage"    # 浏览器标签页标题
+title: "Yujie Pan"    # 浏览器标签页标题
 title_separator: "-"
 name: &name "Yujie Pan"
 description: &description "Master of Applied Statistics at Wuhan University"
