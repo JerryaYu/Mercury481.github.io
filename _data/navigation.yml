@@ -1,7 +1,7 @@
 # 顶部导航栏配置
 main:
   - title: "项目"        # 原 Publications，改为项目经历
-    url: /publications/
+    url: /projects/
     
   - title: "博客文章"        # Blog Posts
     url: /posts/
