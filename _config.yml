@@ -31,6 +31,7 @@ author:
 atom_feed:
   hide: true 
 search: true           # 开启搜索功能
+words_per_minute: 120   # 控制“阅读时间计算速度”
 markdown: kramdown
 highlighter: rouge
 lsi: false
