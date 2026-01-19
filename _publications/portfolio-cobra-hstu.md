@@ -27,5 +27,6 @@ collection: portfolio
     实现了 Balanced K-Means 算法生成 Semantic IDs，解决了传统 RQ-VAE 在长尾物品上 ID 分配不均的问题，将 Codebook 利用率提升至接近 100%。
 
 
-[阅读详细技术博客](/posts/2026-01-18-cobra-hstu-deep-dive)
+[阅读详细技术博客](https://mercury481.github.io/posts/2026/01/cobra-hstu-deep-dive/)
+
 
